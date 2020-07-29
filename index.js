@@ -37,8 +37,7 @@ async function run() {
     await Promise.all(
       epics.map(async (epic) => {
         console.log(`updating ${epic.number}`);
-        const body = epic.body;
-        body.replace(pattern, (s) => setTo + s.substr(prefix));
+        const body = epic.body.replace(pattern, (s) => setTo + s.substr(prefix));
         return await octo.issues.update({ owner, repo, issue_number: epic.number, body });
       }),
     );
