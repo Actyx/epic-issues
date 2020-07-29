@@ -20,7 +20,7 @@ async function run() {
 
     const events = await octo.issues.listEventsForTimeline({ owner, repo, issue_number: number });
     console.log('events', events);
-    const epics = events
+    const epics = events.data
       .filter(
         (ev) =>
           ev.event === 'cross-referenced' &&
