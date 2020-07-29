@@ -1,0 +1,13 @@
+name: Epic Issues
+description: manage issue lists within epics
+inputs:
+  token:
+    description: github token with write access to issues
+    required: true
+  label:
+    description: label used to recognise epics
+    required: true
+    default: Epic
+runs:
+  using: node12
+  main: index.js
