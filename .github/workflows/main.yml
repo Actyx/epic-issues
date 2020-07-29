@@ -1,11 +1,12 @@
 on: [push]
 
 jobs:
-  runs-on: ubuntu-latest
-  name: trying out epic issues
-  steps:
-  - name: run epic issues
-    id: epic
-    uses: Actyx/epic-issues@master
-    with:
-      token: wat
+  epic-issues-test:
+    runs-on: ubuntu-latest
+    name: trying out epic issues
+    steps:
+    - name: run epic issues
+      id: epic
+      uses: Actyx/epic-issues@master
+      with:
+        token: wat
