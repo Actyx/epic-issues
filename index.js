@@ -19,7 +19,6 @@ async function run() {
     console.log(`issue ${number} is ${state}`);
 
     const events = await octo.issues.listEventsForTimeline({ owner, repo, issue_number: number });
-    console.log('events', events);
     const epics = events.data
       .filter(
         (ev) =>
@@ -38,6 +37,7 @@ async function run() {
       epics.map(async (epic) => {
         console.log(`updating ${epic.number}`);
         const body = epic.body.replace(pattern, (s) => setTo + s.substr(prefix));
+        console.log('new body', body);
         return await octo.issues.update({ owner, repo, issue_number: epic.number, body });
       }),
     );
