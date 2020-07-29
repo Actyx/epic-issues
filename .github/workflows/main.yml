@@ -1,4 +1,6 @@
-on: [push]
+on:
+  issues:
+    types: [closed, reopened]
 
 jobs:
   epic-issues-test:
@@ -9,4 +11,4 @@ jobs:
       id: epic
       uses: Actyx/epic-issues@master
       with:
-        token: wat
+        token: ${{ secrets.GITHUB_TOKEN }}
