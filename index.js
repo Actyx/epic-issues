@@ -19,6 +19,7 @@ async function run() {
     console.log(`issue ${number} is ${state}`);
 
     const events = await octo.issues.listEventsForTimeline({ owner, repo, issue_number: number });
+    console.log('events', events);
     const epics = events
       .filter(
         (ev) =>
