@@ -32,7 +32,7 @@ async function run() {
 
     const setTo = state === 'closed' ? '- [x]' : '- [ ]';
     const prefix = setTo.length;
-    const pattern = new RegExp(`- \\[([ x])].*#${number}`, 'g');
+    const pattern = new RegExp(`- \\[([ x])].*#${number}($|[^0-9])`, 'g');
     await Promise.all(
       epics.map(async (epic) => {
         console.log(`updating ${epic.number}`);
