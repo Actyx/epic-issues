@@ -32,12 +32,11 @@ async function run() {
 
     const setTo = state === 'closed' ? '- [x]' : '- [ ]';
     const prefix = setTo.length;
-    const pattern = new RegExp(`- \\[([ x])].*#${number}($|[^0-9])`, 'g');
+    const pattern = new RegExp(`- \\[([ x])].*#${number}($|[^0-9])`, 'gm');
     await Promise.all(
       epics.map(async (epic) => {
         console.log(`updating ${epic.number}`);
         const body = epic.body.replace(pattern, (s) => setTo + s.substr(prefix));
-        console.log('new body', body);
         return await octo.issues.update({ owner, repo, issue_number: epic.number, body });
       }),
     );
